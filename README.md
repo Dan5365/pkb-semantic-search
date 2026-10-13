@@ -82,8 +82,5 @@ All referenced sources are freely accessible (open access / arXiv):
 ## Quick Start
 
 Setup instructions will be added once the first service is merged into the main branch.
-cd pkb-semantic-search
-docker-compose up --build -d
-```
 
 The baseline Auth and Notes services start from this repository. The search engine and frontend will be available after they are merged into the main branch.
