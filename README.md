@@ -10,7 +10,7 @@ Intelligent Personal Knowledge Base: semantic search module on PostgreSQL/pgvect
 
 ## Project Status
 
-This repository was created for the diploma thesis. The Auth Service and Notes Service are imported as a baseline from a 2025 project, which predates the thesis: [Secure-Notes-API-FastAPI-](https://github.com/Dan5365/Secure-Notes-API-FastAPI-). All other components are developed here:
+This repository was created for the diploma thesis. The project is in the design and early development stage. The following components are being developed:
 
 - Semantic search engine (dense, sparse/BM25 and hybrid retrieval with Reciprocal Rank Fusion)
 - Embedding service (model selection, chunking, caching, error handling)
@@ -62,16 +62,9 @@ Unit, integration and E2E tests, CI/CD pipelines (GitHub Actions), Docker infras
 
 | Service | Port | Status |
 |---|---|---|
-| Auth Service | 8000 | baseline (2025), imported |
-| Notes Service | 8001 | baseline (2025), imported |
-| Search Engine | 8002 | in development (diploma) |
-| Frontend | 5173 | in development (diploma) |
-
-API documentation (available when services are running):
-
-- `http://localhost:8000/docs`
-- `http://localhost:8001/docs`
-- `http://localhost:8002/docs`
+| Search Engine | 8002 | planned |
+| Embedding Service | 8003 | planned |
+| Frontend | 5173 | planned |
 
 ## Literature
 
@@ -88,15 +81,7 @@ All referenced sources are freely accessible (open access / arXiv):
 
 ## Quick Start
 
-### Prerequisites
-
-- Docker Engine 24.0+ and Docker Compose 2.0+
-- Git
-
-### Installation
-
-```bash
-git clone https://github.com/Dan5365/pkb-semantic-search.git
+Setup instructions will be added once the first service is merged into the main branch.
 cd pkb-semantic-search
 docker-compose up --build -d
 ```
