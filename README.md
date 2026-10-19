@@ -68,18 +68,16 @@ Unit, integration and E2E tests, CI/CD pipelines (GitHub Actions), Docker infras
 
 ## Literature
 
-All referenced sources are freely accessible (open access / arXiv):
+Sources are cited via arXiv or the publisher's DOI. Some sources may require institutional access.
 
-1. pgvector: https://github.com/pgvector/pgvector
-2. Karpukhin et al. (2020). Dense Passage Retrieval for Open-Domain Question Answering. https://arxiv.org/abs/2004.04906
-3. Cormack, Clarke, Büttcher (2009). Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods. SIGIR 2009.
-4. Reimers & Gurevych (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. https://arxiv.org/abs/1908.10084
-5. Malkov & Yashunin (2018). Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs. https://arxiv.org/abs/1603.09320
-6. **Cormack, G. V., Clarke, C. L., & Büttcher, S. (2009).** *Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods.* SIGIR 2009.
-   * [Official Publisher DOI (Main Source)](https://doi.org)
-   * [Open-Access Version (Author's Manuscript / ResearchGate)](https://researchgate.net)
-7. Pan et al. (2023). Survey on Vector Database Management Systems. https://arxiv.org/abs/2310.11703
-8. Manning, Raghavan, Schütze. Introduction to Information Retrieval. https://nlp.stanford.edu/IR-book/information-retrieval-book.html
+1. Karpukhin, V., et al. (2020). Dense Passage Retrieval for Open-Domain Question Answering. EMNLP 2020. https://arxiv.org/abs/2004.04906
+2. Cormack, G. V., Clarke, C. L. A., & Büttcher, S. (2009). Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods. In Proceedings of SIGIR 2009.
+3. Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. https://arxiv.org/abs/1908.10084
+4. Malkov, Y. A., & Yashunin, D. A. (2018). Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs. https://arxiv.org/abs/1603.09320
+5. Robertson, S., & Zaragoza, H. (2009). The Probabilistic Relevance Framework: BM25 and Beyond. Foundations and Trends in Information Retrieval, 3(4), 333–389. https://doi.org/10.1561/1500000019
+6. Pan, W., et al. (2023). Survey on Vector Database Management Systems. https://arxiv.org/abs/2310.11703
+7. Manning, C. D., Raghavan, P., & Schütze, H. (2008). Introduction to Information Retrieval. Cambridge University Press. https://nlp.stanford.edu/IR-book/information-retrieval-book.html
+8. pgvector: open-source PostgreSQL extension. https://github.com/pgvector/pgvector
 
 ## Quick Start
 
