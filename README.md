@@ -75,7 +75,9 @@ All referenced sources are freely accessible (open access / arXiv):
 3. Cormack, Clarke, Büttcher (2009). Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods. SIGIR 2009.
 4. Reimers & Gurevych (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. https://arxiv.org/abs/1908.10084
 5. Malkov & Yashunin (2018). Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs. https://arxiv.org/abs/1603.09320
-6. Robertson & Zaragoza (2009). The Probabilistic Relevance Framework: BM25 and Beyond. https://www.ftweb.org/pdf/bm25.pdf
+6. **Cormack, G. V., Clarke, C. L., & Büttcher, S. (2009).** *Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods.* SIGIR 2009.
+   * [Official Publisher DOI (Main Source)](https://doi.org)
+   * [Open-Access Version (Author's Manuscript / ResearchGate)](https://researchgate.net)
 7. Pan et al. (2023). Survey on Vector Database Management Systems. https://arxiv.org/abs/2310.11703
 8. Manning, Raghavan, Schütze. Introduction to Information Retrieval. https://nlp.stanford.edu/IR-book/information-retrieval-book.html
 
