@@ -62,6 +62,4 @@ Build a semantic search module for a personal knowledge base on a single Postgre
 - The quality of the labeled test set affects the reliability of the metrics, since labeling is done manually.
 - Results depend on the chosen embedding model; conclusions apply to the selected models and data.
 
-- The project timeline is limited by the School's academic schedule; key results must be ready for the defense.
-- The quality of the labeled test set affects the reliability of the metrics, since labeling is done manually.
-- Results depend on the chosen embedding model; conclusions apply to the selected models and data.
+
