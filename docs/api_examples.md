@@ -143,8 +143,3 @@ The three lists use the same `k` and the same query, so the interface can show t
 }
 ```
 
-## 6. Open questions for the interface (to agree with Tapishev)
-
-1. Is `excerpt` needed in full or truncated to a fixed length (proposed: 300 characters)?
-2. Should the response include the note title? Proposed: not in MVP, add later if the interface needs it.
-3. Pagination is out of scope for the MVP; `k` is the only limit.
