@@ -78,6 +78,10 @@ Sources are cited via arXiv or the publisher's DOI. Some sources may require ins
 6. Pan, W., et al. (2023). Survey on Vector Database Management Systems. https://arxiv.org/abs/2310.11703
 7. Manning, C. D., Raghavan, P., & Schütze, H. (2008). Introduction to Information Retrieval. Cambridge University Press. https://nlp.stanford.edu/IR-book/information-retrieval-book.html
 8. pgvector: open-source PostgreSQL extension. https://github.com/pgvector/pgvector
+9. Bruch, S., Gai, S., & Ingber, A. (2023). An Analysis of Fusion Functions for Hybrid Retrieval. ACM Transactions on Information Systems, 42(1). https://arxiv.org/abs/2210.11934
+10. Thakur, N., Reimers, N., Rücklé, A., Srivastava, A., & Gurevych, I. (2021). BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models. NeurIPS 2021 Datasets and Benchmarks Track. https://arxiv.org/abs/2104.08663
+11. Qu, R., Tu, R., & Bao, F. (2024). Is Semantic Chunking Worth the Computational Cost? https://arxiv.org/abs/2410.13070
+12. Wang, L., Yang, N., Huang, X., Yang, L., Majumder, R., & Wei, F. (2024). Multilingual E5 Text Embeddings: A Technical Report. https://arxiv.org/abs/2402.05672
 
 ## Quick Start
 
