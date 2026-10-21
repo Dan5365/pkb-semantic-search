@@ -1,0 +1,33 @@
+@startuml 03_components
+title Component Diagram (draft): PKB Semantic Search
+
+package "Frontend" {
+  [React App\n(search UI, strategy comparison)] as ReactApp
+}
+
+package "Backend services" {
+  [Search API\nFastAPI :8002] as SearchAPI
+  [Notes API\nFastAPI :8001] as NotesAPI
+  [Embedding Service\nFastAPI :8003] as EmbSvc
+  [Evaluation Module\n(Python script / service)] as Eval
+}
+
+database "PostgreSQL 16 + pgvector" as DB {
+  [notes, chunks]
+  [embeddings\n(HNSW / IVFFlat index)]
+  [labeled queries]
+}
+
+cloud "Embedding model\n(sentence-transformers)" as Model
+
+ReactApp --> SearchAPI : HTTP/JSON\nsearch, compare
+ReactApp --> NotesAPI : HTTP/JSON\nnote CRUD
+SearchAPI --> DB : sparse (FTS/BM25),\ndense (pgvector), RRF
+SearchAPI --> EmbSvc : query embedding
+NotesAPI --> DB : store notes
+NotesAPI --> EmbSvc : chunk embeddings\non create/update
+EmbSvc --> Model : encode text
+EmbSvc --> DB : store vectors
+Eval --> SearchAPI : run queries\nper strategy
+Eval --> DB : read labeled queries
+@enduml

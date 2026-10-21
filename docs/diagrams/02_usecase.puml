@@ -1,0 +1,35 @@
+@startuml 02_usecase
+title Use Case Diagram: PKB Semantic Search
+
+left to right direction
+
+actor "User" as User
+actor "Evaluator\n(analyst)" as Evaluator
+
+rectangle "PKB Semantic Search" {
+  usecase "Add / edit / delete note" as UC1
+  usecase "Search notes\n(choose strategy)" as UC2
+  usecase "Search by sparse (BM25)" as UC3
+  usecase "Search by dense (vector)" as UC4
+  usecase "Search by hybrid (RRF)" as UC5
+  usecase "Compare strategies\nfor one query" as UC6
+  usecase "View ranked results" as UC7
+  usecase "Manage labeled query set" as UC8
+  usecase "Run evaluation\n(Precision@K, Recall@K, MRR)" as UC9
+  usecase "View comparison report\nvs baseline" as UC10
+}
+
+User --> UC1
+User --> UC2
+User --> UC6
+UC2 ..> UC3 : <<extend>>
+UC2 ..> UC4 : <<extend>>
+UC2 ..> UC5 : <<extend>>
+UC2 ..> UC7 : <<include>>
+UC6 ..> UC7 : <<include>>
+
+Evaluator --> UC8
+Evaluator --> UC9
+Evaluator --> UC10
+UC9 ..> UC10 : <<include>>
+@enduml

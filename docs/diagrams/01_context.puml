@@ -1,0 +1,20 @@
+@startuml 01_context
+title System Context: PKB Semantic Search
+
+actor "User\n(personal note author)" as User
+actor "Evaluator\n(researcher)" as Evaluator
+actor "Supervisor" as Supervisor
+
+rectangle "PKB Semantic Search System" as System
+
+cloud "Embedding model provider\n(local sentence-transformers\nor cloud embedding API)" as EmbProvider
+database "Notes source\n(user's text notes)" as Notes
+
+User --> System : writes notes, searches,\nviews ranked results
+Evaluator --> System : labels queries,\nruns evaluation, reads metrics
+Supervisor ..> System : reviews docs and\nrepository history (indirect)
+
+System --> EmbProvider : requests embeddings\nfor chunks and queries
+EmbProvider --> System : returns vectors\n(dense representations)
+System --> Notes : imports and stores notes
+@enduml
