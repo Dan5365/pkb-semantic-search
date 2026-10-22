@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прототип — PKB Semantic Search</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --border: #e2e5ea;
+  --text: #1c2330;
+  --muted: #6b7587;
+  --accent: #3b5bdb;
+  --accent-soft: #e7ecff;
+  --kw: #e8590c;
+  --kw-soft: #fff0e6;
+  --sem: #3b5bdb;
+  --sem-soft: #e7ecff;
+  --hyb: #2b8a3e;
+  --hyb-soft: #e6f6ea;
+  --radius: 10px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.5 -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  display: grid; grid-template-columns: 220px 1fr; min-height: 100vh;
+}
+aside {
+  background: var(--surface); border-right: 1px solid var(--border);
+  padding: 20px 14px; position: sticky; top: 0; height: 100vh;
+}
+aside .logo { font-weight: 700; font-size: 17px; margin: 0 8px 20px; }
+aside .logo span { color: var(--accent); }
+aside a {
+  display: block; padding: 9px 12px; border-radius: 8px;
+  color: var(--text); text-decoration: none; margin-bottom: 2px;
+}
+aside a:hover { background: var(--bg); }
+aside a.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+aside .group { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 12px 6px; }
+main { padding: 28px 36px 60px; max-width: 1100px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: var(--muted); margin: 0 0 22px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 20px; margin-bottom: 16px;
+}
+.card h2 { font-size: 15px; margin: 0 0 12px; }
+.searchbar { display: flex; gap: 10px; }
+.searchbar input {
+  flex: 1; padding: 12px 14px; font-size: 16px;
+  border: 1px solid var(--border); border-radius: 8px;
+}
+.searchbar input:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+.btn {
+  padding: 11px 18px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface); font-size: 14px; cursor: pointer; color: var(--text);
+}
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.chip {
+  padding: 4px 10px; border-radius: 99px; font-size: 12px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--muted);
+}
+.chip.kw  { background: var(--kw-soft);  color: var(--kw);  border-color: transparent; }
+.chip.sem { background: var(--sem-soft); color: var(--sem); border-color: transparent; }
+.chip.hyb { background: var(--hyb-soft); color: var(--hyb); border-color: transparent; }
+.meta { color: var(--muted); font-size: 13px; }
+.result { padding: 14px 0; border-top: 1px solid var(--border); }
+.result:first-child { border-top: 0; padding-top: 0; }
+.result h3 { margin: 0 0 3px; font-size: 16px; color: var(--accent); }
+.result p { margin: 4px 0 8px; }
+mark { background: #fff3bf; padding: 0 2px; border-radius: 2px; }
+.score { font-variant-numeric: tabular-nums; font-size: 12px; color: var(--muted); }
+.bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; width: 120px; display: inline-block; vertical-align: middle; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.strategy {
+  border: 2px solid var(--border); border-radius: var(--radius);
+  padding: 16px; background: var(--surface); cursor: pointer; position: relative;
+}
+.strategy.selected { border-color: var(--accent); background: #fbfcff; }
+.strategy h3 { margin: 6px 0 6px; font-size: 16px; }
+.strategy code, code.k {
+  display: block; background: #f1f3f5; border-radius: 6px; padding: 8px 10px;
+  font: 12px/1.45 ui-monospace, Menlo, Consolas, monospace; margin-top: 10px; white-space: pre-wrap;
+}
+.strategy ul { padding-left: 18px; margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+.radio { position: absolute; top: 14px; right: 14px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border); }
+.selected .radio { border-color: var(--accent); background: radial-gradient(var(--accent) 45%, transparent 50%); }
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 5px; }
+.slider { display: flex; align-items: center; gap: 12px; }
+.slider input[type=range] { flex: 1; accent-color: var(--accent); }
+select, input[type=number] { padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: #fff; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+td.best { background: var(--hyb-soft); font-weight: 700; color: var(--hyb); }
+.col-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.col-head h3 { margin: 0; font-size: 15px; }
+.mini { padding: 9px 0; border-top: 1px solid var(--border); font-size: 14px; }
+.mini:first-of-type { border-top: 0; }
+.mini .n { display: inline-block; width: 20px; color: var(--muted); }
+.hit { color: var(--hyb); font-weight: 600; }
+.miss { color: var(--muted); }
+.barchart { display: grid; grid-template-columns: 90px 1fr 46px; gap: 8px; align-items: center; margin: 6px 0; font-size: 13px; }
+.barchart .t { height: 14px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.barchart .t i { display: block; height: 100%; }
+.legend { display: flex; gap: 14px; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.legend b { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+@media (max-width: 900px) {
+  body { grid-template-columns: 1fr; }
+  aside { display: none; }
+  .grid3, .grid2 { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+<aside>
+  <div class="logo">Know<span>Base</span></div>
+  <a class="active" href="index.html">Оглавление</a>
+  <a href="01-search.html">Поиск</a>
+  <a href="02-strategy.html">Стратегия поиска</a>
+  <a href="03-comparison.html">Сравнение стратегий</a>
+</aside>
+<main>
+  <h1>Прототип модуля семантического поиска</h1>
+  <p class="sub">Макеты ключевых экранов. Данные тестовые, заметки синтетические (NFR-9).</p>
+
+  <div class="grid3">
+    <a class="strategy" href="01-search.html" style="text-decoration:none;color:inherit">
+      <span class="chip">Экран 1</span>
+      <h3>Поиск</h3>
+      <p class="meta">Запрос, выбор стратегии и K, ранжированный список с рангами и временем ответа.</p>
+    </a>
+    <a class="strategy" href="02-strategy.html" style="text-decoration:none;color:inherit">
+      <span class="chip">Экран 2</span>
+      <h3>Выбор стратегии</h3>
+      <p class="meta">Три стратегии (sparse, dense, hybrid RRF) с их параметрами: модель, индекс, ef_search, K и константа k.</p>
+    </a>
+    <a class="strategy" href="03-comparison.html" style="text-decoration:none;color:inherit">
+      <span class="chip">Экран 3</span>
+      <h3>Сравнение результатов</h3>
+      <p class="meta">Один запрос на трёх стратегиях в трёх колонках: ранги, note_id и chunk_id, режим разметки для разметчика.</p>
+    </a>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2>Соответствие требованиям</h2>
+    <table>
+      <thead><tr><th>Экран</th><th>Требования</th></tr></thead>
+      <tbody>
+        <tr><td>Поиск</td><td>FR-8, FR-10</td></tr>
+        <tr><td>Выбор стратегии</td><td>FR-5, FR-6, FR-7</td></tr>
+        <tr><td>Сравнение</td><td>FR-9, FR-11 (метрики FR-14 — на экране результатов эксперимента)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

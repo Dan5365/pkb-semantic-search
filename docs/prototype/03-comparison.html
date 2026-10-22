@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Экран 3 — Сравнение</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --border: #e2e5ea;
+  --text: #1c2330;
+  --muted: #6b7587;
+  --accent: #3b5bdb;
+  --accent-soft: #e7ecff;
+  --kw: #e8590c;
+  --kw-soft: #fff0e6;
+  --sem: #3b5bdb;
+  --sem-soft: #e7ecff;
+  --hyb: #2b8a3e;
+  --hyb-soft: #e6f6ea;
+  --radius: 10px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.5 -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  display: grid; grid-template-columns: 220px 1fr; min-height: 100vh;
+}
+aside {
+  background: var(--surface); border-right: 1px solid var(--border);
+  padding: 20px 14px; position: sticky; top: 0; height: 100vh;
+}
+aside .logo { font-weight: 700; font-size: 17px; margin: 0 8px 20px; }
+aside .logo span { color: var(--accent); }
+aside a {
+  display: block; padding: 9px 12px; border-radius: 8px;
+  color: var(--text); text-decoration: none; margin-bottom: 2px;
+}
+aside a:hover { background: var(--bg); }
+aside a.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+aside .group { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 12px 6px; }
+main { padding: 28px 36px 60px; max-width: 1100px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: var(--muted); margin: 0 0 22px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 20px; margin-bottom: 16px;
+}
+.card h2 { font-size: 15px; margin: 0 0 12px; }
+.searchbar { display: flex; gap: 10px; }
+.searchbar input {
+  flex: 1; padding: 12px 14px; font-size: 16px;
+  border: 1px solid var(--border); border-radius: 8px;
+}
+.searchbar input:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+.btn {
+  padding: 11px 18px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface); font-size: 14px; cursor: pointer; color: var(--text);
+}
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.chip {
+  padding: 4px 10px; border-radius: 99px; font-size: 12px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--muted);
+}
+.chip.kw  { background: var(--kw-soft);  color: var(--kw);  border-color: transparent; }
+.chip.sem { background: var(--sem-soft); color: var(--sem); border-color: transparent; }
+.chip.hyb { background: var(--hyb-soft); color: var(--hyb); border-color: transparent; }
+.meta { color: var(--muted); font-size: 13px; }
+.result { padding: 14px 0; border-top: 1px solid var(--border); }
+.result:first-child { border-top: 0; padding-top: 0; }
+.result h3 { margin: 0 0 3px; font-size: 16px; color: var(--accent); }
+.result p { margin: 4px 0 8px; }
+mark { background: #fff3bf; padding: 0 2px; border-radius: 2px; }
+.score { font-variant-numeric: tabular-nums; font-size: 12px; color: var(--muted); }
+.bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; width: 120px; display: inline-block; vertical-align: middle; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.strategy {
+  border: 2px solid var(--border); border-radius: var(--radius);
+  padding: 16px; background: var(--surface); cursor: pointer; position: relative;
+}
+.strategy.selected { border-color: var(--accent); background: #fbfcff; }
+.strategy h3 { margin: 6px 0 6px; font-size: 16px; }
+.strategy code, code.k {
+  display: block; background: #f1f3f5; border-radius: 6px; padding: 8px 10px;
+  font: 12px/1.45 ui-monospace, Menlo, Consolas, monospace; margin-top: 10px; white-space: pre-wrap;
+}
+.strategy ul { padding-left: 18px; margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+.radio { position: absolute; top: 14px; right: 14px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border); }
+.selected .radio { border-color: var(--accent); background: radial-gradient(var(--accent) 45%, transparent 50%); }
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 5px; }
+.slider { display: flex; align-items: center; gap: 12px; }
+.slider input[type=range] { flex: 1; accent-color: var(--accent); }
+select, input[type=number] { padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: #fff; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+td.best { background: var(--hyb-soft); font-weight: 700; color: var(--hyb); }
+.col-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.col-head h3 { margin: 0; font-size: 15px; }
+.mini { padding: 9px 0; border-top: 1px solid var(--border); font-size: 14px; }
+.mini:first-of-type { border-top: 0; }
+.mini .n { display: inline-block; width: 20px; color: var(--muted); }
+.hit { color: var(--hyb); font-weight: 600; }
+.miss { color: var(--muted); }
+.barchart { display: grid; grid-template-columns: 90px 1fr 46px; gap: 8px; align-items: center; margin: 6px 0; font-size: 13px; }
+.barchart .t { height: 14px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.barchart .t i { display: block; height: 100%; }
+.legend { display: flex; gap: 14px; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.legend b { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+@media (max-width: 900px) {
+  body { grid-template-columns: 1fr; }
+  aside { display: none; }
+  .grid3, .grid2 { grid-template-columns: 1fr; }
+}
+
+</style>
+<style>
+  .annot { display:flex; gap:6px; margin-top:6px; }
+  .annot button { font-size:12px; padding:3px 8px; border:1px solid var(--border); background:#fff; border-radius:6px; cursor:pointer; }
+  .annot button.on { background:var(--hyb-soft); color:var(--hyb); border-color:transparent; font-weight:600; }
+  .annotator { background:#fff7e6; border:1px solid #f0c36d; border-radius:var(--radius); padding:10px 14px; font-size:13px; margin-bottom:16px; }
+  .rank { display:inline-block; min-width:26px; font-weight:700; color:var(--accent); }
+  .row-item { padding:9px 0; border-top:1px solid var(--border); }
+  .row-item:first-of-type { border-top:0; }
+  .row-item .ex { font-size:13px; color:var(--muted); margin-top:2px; }
+  .col-head .chip { white-space:nowrap; }
+</style>
+</head>
+<body>
+<aside>
+  <div class="logo">Know<span>Base</span></div>
+  <a href="01-search.html">Поиск</a>
+  <a href="02-strategy.html">Стратегия поиска</a>
+  <a class="active" href="03-comparison.html">Сравнение стратегий</a>
+  <div class="group">База знаний</div>
+  <a href="#">Заметки</a>
+  <a href="#">Импорт</a>
+  <a href="#">Настройки</a>
+</aside>
+<main>
+  <h1>Сравнение стратегий для одного запроса</h1>
+  <p class="sub">Один запрос, одинаковое K для всех трёх списков (POST /search/compare). Позиции в списке сравнимы, сырые оценки — нет.</p>
+
+  <div class="card">
+    <div class="searchbar">
+      <input value="где я писал про настройку индексов в postgres">
+      <button class="btn primary">Сравнить</button>
+    </div>
+    <div class="row meta" style="margin-top:10px">
+      <span>K = <b>5</b></span><span>·</span>
+      <span>модель: all-MiniLM-L6-v2</span><span>·</span>
+      <span>индекс: HNSW</span>
+    </div>
+  </div>
+
+  <div class="annotator">
+    <label><input type="checkbox" checked> Режим разметки (только для разметчика): отмечайте, релевантна ли заметка запросу. Отметки сохраняются в размеченный набор, а не в пользовательские данные.</label>
+  </div>
+
+  <div class="grid3">
+    <div class="card">
+      <div class="col-head"><h3>Sparse</h3><span class="chip kw">BM25</span></div>
+      <div class="row-item"><span class="rank">#1</span>note_017 · chunk_0051 <span class="meta">4.21</span><div class="ex">Настройку индекса под нагрузку удобнее проверять, замеряя задержку…</div><div class="annot"><button class="on">релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#2</span>note_042 · chunk_0137 <span class="meta">3.88</span><div class="ex">Параметры m и ef_construction у HNSW задают баланс…</div><div class="annot"><button class="on">релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#3</span>note_031 · chunk_0098 <span class="meta">2.10</span><div class="ex">EXPLAIN ANALYZE показывает, использует ли запрос индекс…</div><div class="annot"><button>релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#4</span>note_060 · chunk_0244 <span class="meta">1.37</span><div class="ex">Резервное копирование через pg_dump…</div><div class="annot"><button>релевантна</button><button class="on">нет</button></div></div>
+      <div class="row-item"><span class="rank">#5</span>note_009 · chunk_0027 <span class="meta">0.95</span><div class="ex">Заметки о кофе: помол и температура воды…</div><div class="annot"><button>релевантна</button><button class="on">нет</button></div></div>
+      <div class="meta" style="margin-top:8px">время ответа: 18 мс</div>
+    </div>
+
+    <div class="card">
+      <div class="col-head"><h3>Dense</h3><span class="chip sem">cosine</span></div>
+      <div class="row-item"><span class="rank">#1</span>note_042 · chunk_0137 <span class="meta">0.81</span><div class="ex">Параметры m и ef_construction у HNSW задают баланс…</div><div class="annot"><button class="on">релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#2</span>note_055 · chunk_0210 <span class="meta">0.77</span><div class="ex">Если в плане стоит Seq Scan вместо Index Scan…</div><div class="annot"><button class="on">релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#3</span>note_017 · chunk_0051 <span class="meta">0.74</span><div class="ex">Настройку индекса под нагрузку удобнее проверять…</div><div class="annot"><button class="on">релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#4</span>note_008 · chunk_0019 <span class="meta">0.69</span><div class="ex">Для таблицы из нескольких тысяч чанков lists…</div><div class="annot"><button>релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#5</span>note_071 · chunk_0302 <span class="meta">0.52</span><div class="ex">Рецепт борща на три порции…</div><div class="annot"><button>релевантна</button><button class="on">нет</button></div></div>
+      <div class="meta" style="margin-top:8px">время ответа: 22 мс</div>
+    </div>
+
+    <div class="card">
+      <div class="col-head"><h3>Hybrid (RRF)</h3><span class="chip hyb">порядок RRF</span></div>
+      <div class="row-item"><span class="rank">#1</span>note_042 · chunk_0137 <span class="meta">0.0328</span><div class="ex">sparse #2 · dense #1</div><div class="annot"><button class="on">релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#2</span>note_017 · chunk_0051 <span class="meta">0.0320</span><div class="ex">sparse #1 · dense #3</div><div class="annot"><button class="on">релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#3</span>note_055 · chunk_0210 <span class="meta">0.0161</span><div class="ex">sparse — · dense #2</div><div class="annot"><button class="on">релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#4</span>note_031 · chunk_0098 <span class="meta">0.0159</span><div class="ex">sparse #3 · dense —</div><div class="annot"><button>релевантна</button><button>нет</button></div></div>
+      <div class="row-item"><span class="rank">#5</span>note_008 · chunk_0019 <span class="meta">0.0156</span><div class="ex">sparse — · dense #4</div><div class="annot"><button>релевантна</button><button>нет</button></div></div>
+      <div class="meta" style="margin-top:8px">время ответа: 41 мс</div>
+    </div>
+  </div>
+
+  <div class="card meta" style="margin-top:16px;font-size:12px">
+    Значения: sparse — BM25, dense — cosine, hybrid — RRF (k = 60). Сырые оценки между колонками не сравниваются. Колонка «sparse #N / dense #N» у гибрида показывает ранги из исходных списков. Метрики Precision@K, Recall@K и MRR по всему набору — на экране результатов эксперимента.
+  </div>
+
+  <div class="row" style="justify-content:center; margin-top:12px">
+    <a class="btn" href="02-strategy.html">← К выбору стратегии</a>
+    <a class="btn" href="index.html">Оглавление</a>
+  </div>
+</main>
+</body>
+</html>
