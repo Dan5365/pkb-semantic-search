@@ -1,6 +1,7 @@
 # Survey Results (aggregated)
 
 **Project:** PKB Semantic Search
+**Author:** Daniyal Tapishev
 **Instrument:** Google Form, Russian language, October 2026
 **Respondents:** 8. Contact data is not stored in this document. Raw responses are kept locally and are not committed.
 
