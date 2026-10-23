@@ -67,13 +67,15 @@ The research question is which strategy returns relevant notes higher in the lis
 - `frontend/`: React application (added during the thesis)
 
 ## Documents
-
 - [Project proposal](docs/proposal.md)
 - [Requirements](docs/requirements.md)
 - [Literature review](docs/literature.md)
-- [Comparison of existing systems](docs/comparison_systems.md)
+- [Comparison of existing systems](docs/existing_systems_comparison.md)
 - [Comparison of technologies](docs/comparison_technologies.md)
 - [API examples](docs/api_examples.md)
+- [Embedding model selection](docs/embedding_model.md)
+- [Verification and evaluation plan](docs/verification_plan.md)
+- [Project management and risks](docs/project_management.md)
 
 ## Tech Stack
 
