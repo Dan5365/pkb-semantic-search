@@ -48,11 +48,11 @@ The research question is which strategy returns relevant notes higher in the lis
 
 ## Team and Responsibilities
 
-**Адильбекулы Даниял** (SE-2407), Backend and Database. Schema and migrations in PostgreSQL with pgvector, HNSW/IVFFlat indexes, the three retrieval strategies (sparse, dense, hybrid with RRF), the search API contract and the `/search` endpoint.
+**Adilbekuly Daniyal** (SE-2407), Backend and Database. Schema and migrations in PostgreSQL with pgvector, HNSW/IVFFlat indexes, the three retrieval strategies (sparse, dense, hybrid with RRF), the search API contract and the `/search` endpoint.
 
-**Тапишев Даниял** (SE-2407), ML and Frontend. Embedding model selection and comparison, chunking, the embedding service with caching and error handling, the React interface for comparing strategies.
+**Tapishev Daniyal** (SE-2407), ML and Frontend. Embedding model selection and comparison, chunking, the embedding service with caching and error handling, the React interface for comparing strategies.
 
-**Марат Ерканат** (SE-2407), Data Engineering and Evaluation. Labeled query set and labeling protocol, data loading and checks, baseline queries, Precision@K, Recall@K and MRR, the `/search/compare` endpoint, the view of experiment results.
+**Marat Erkanat** (SE-2407), Data Engineering and Evaluation. Labeled query set and labeling protocol, data loading and checks, baseline queries, Precision@K, Recall@K and MRR, the `/search/compare` endpoint, the view of experiment results.
 
 **Academic supervisor:** Айтмұханбетова Эльвира Айтмұханбетқызы
 
